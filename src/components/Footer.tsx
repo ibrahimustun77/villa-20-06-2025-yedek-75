@@ -23,11 +23,11 @@ const Footer = () => {
             </p>
             
             {/* NHT Logo */}
-            <div className="mb-6">
+            <div className="mb-6 text-center">
               <img 
                 src={nhtLogo} 
                 alt="NHT Karakoç İnşaat" 
-                className="h-20 w-auto"
+                className="h-32 w-auto mx-auto"
               />
             </div>
             
