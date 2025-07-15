@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useContactSettings } from '@/contexts/ContactSettingsContext';
+// Logo uploaded by user
+const nhtLogo = "/lovable-uploads/fdceb919-f820-437f-bcf9-b7b576a2f18e.png";
 
 const Footer = () => {
   const { contactSettings } = useContactSettings();
@@ -19,6 +21,15 @@ const Footer = () => {
             <p className="text-gray-600 mb-6 max-w-md">
               Yalova Termal bölgesine çok yakın bir konumda yer alan, 44 özel villadan oluşan, doğal yapıya sahip lüks bir yaşam projesi.
             </p>
+            
+            {/* NHT Logo */}
+            <div className="mb-6">
+              <img 
+                src={nhtLogo} 
+                alt="NHT Karakoç İnşaat" 
+                className="h-20 w-auto"
+              />
+            </div>
             
             <div className="flex space-x-4">
               {contactSettings?.facebook_url && (
@@ -97,6 +108,12 @@ const Footer = () => {
                   Yalova, Termal Bölgesi<br />
                   Therma Prime Satış Ofisi
                 </span>
+              </li>
+              <li className="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-3 text-therma">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span className="text-gray-600">+90 (531) 842 34 77</span>
               </li>
               <li className="flex items-start">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 mr-3 text-therma">

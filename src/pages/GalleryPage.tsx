@@ -13,6 +13,7 @@ import { useGalleryAnimation } from '@/components/gallery/hooks/useGalleryAnimat
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const galleryRef = useGalleryAnimation();
 
   const { data: images = [], isLoading } = useQuery({
@@ -45,6 +46,24 @@ const GalleryPage = () => {
   const selectedImage = selectedImageId 
     ? images.find(img => img.id === selectedImageId) 
     : null;
+
+  const handleImageClick = (imageId: string) => {
+    const index = filteredImages.findIndex(img => img.id === imageId);
+    setCurrentImageIndex(index);
+    setSelectedImageId(imageId);
+  };
+
+  const handleNext = () => {
+    const nextIndex = (currentImageIndex + 1) % filteredImages.length;
+    setCurrentImageIndex(nextIndex);
+    setSelectedImageId(filteredImages[nextIndex].id);
+  };
+
+  const handlePrev = () => {
+    const prevIndex = currentImageIndex === 0 ? filteredImages.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setSelectedImageId(filteredImages[prevIndex].id);
+  };
 
   if (isLoading) {
     return (
@@ -82,7 +101,7 @@ const GalleryPage = () => {
               url: img.image_url,
               alt: img.alt_text || img.title || 'Gallery image'
             }))}
-            onImageClick={setSelectedImageId}
+            onImageClick={handleImageClick}
           />
         ) : (
           <EmptyGallery />
@@ -95,6 +114,14 @@ const GalleryPage = () => {
           imageUrl={selectedImage.image_url}
           imageAlt={selectedImage.alt_text || selectedImage.title || 'Gallery image'}
           onClose={() => setSelectedImageId(null)}
+          images={filteredImages.map(img => ({
+            id: img.id,
+            url: img.image_url,
+            alt: img.alt_text || img.title || 'Gallery image'
+          }))}
+          currentIndex={currentImageIndex}
+          onNext={handleNext}
+          onPrev={handlePrev}
         />
       )}
     </div>

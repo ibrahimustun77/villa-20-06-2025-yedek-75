@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { TabsContent, TabsList, TabsTrigger, Tabs } from './ui/tabs';
 import VillaManagement from './admin/VillaManagement';
-import MapManagement from './admin/map/MapManagement';
+
 import ContactSettings from './admin/ContactSettings';
 import GalleryManagement from './admin/GalleryManagement';
 import SliderManagementEnhanced from './admin/SliderManagementEnhanced';
@@ -12,7 +12,7 @@ import EmailSettings from './admin/EmailSettings';
 import ContactMessages from './admin/ContactMessages';
 import IconManagementEnhanced from './admin/IconManagementEnhanced';
 import RoomTypeManagement from './admin/room-management/RoomTypeManagement';
-import { LogOut, Map, Home, Phone, Image, Mail, MessageSquare, Monitor, FolderOpen, Tags, Palette, Building } from 'lucide-react';
+import { LogOut, Home, Phone, Image, Mail, MessageSquare, Monitor, FolderOpen, Tags, Palette, Building } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const VillaAdminPanel: React.FC = () => {
@@ -32,10 +32,6 @@ const VillaAdminPanel: React.FC = () => {
               <TabsTrigger value="room-management" className="flex items-center gap-2">
                 <Building className="h-4 w-4" />
                 Oda Yönetimi
-              </TabsTrigger>
-              <TabsTrigger value="map-management" className="flex items-center gap-2">
-                <Map className="h-4 w-4" />
-                Harita Yönetimi
               </TabsTrigger>
               <TabsTrigger value="icon-management" className="flex items-center gap-2">
                 <Palette className="h-4 w-4" />
@@ -88,9 +84,6 @@ const VillaAdminPanel: React.FC = () => {
           <RoomTypeManagement />
         </TabsContent>
         
-        <TabsContent value="map-management" className="space-y-4">
-          <MapManagement />
-        </TabsContent>
 
         <TabsContent value="icon-management" className="space-y-4">
           <IconManagementEnhanced />

@@ -4,7 +4,7 @@ import { SitePlanVilla } from '@/hooks/useVillaPageData';
 import { VillaType } from '@/services/villaService';
 import VillaTypeSelector from './VillaTypeSelector';
 import VillaDetails from './VillaDetails';
-import VillaMapSection from './VillaMapSection';
+
 import ContactSection from './ContactSection';
 
 // Villa data helper functions - SEÇİLİ VILLA TİPİNE AİT TÜM VİLLALARI DÖNDÜR
@@ -86,18 +86,6 @@ const VillaPageContent: React.FC<VillaPageContentProps> = ({
         {/* Villa Details Component - make sure this gets animated immediately */}
         <VillaDetails villaData={selectedVillaData} />
         
-        {/* Villa Map Section Component - enhance border visibility */}
-        <VillaMapSection
-          villas={villas}
-          villaTypes={villaTypes}
-          activeVilla={activeVilla}
-          setActiveVilla={onSelectVilla}
-          sitePlanVillas={sitePlanVillas}
-          selectedVillaNumber={selectedVillaNumber}
-          setSelectedVillaNumber={setSelectedVillaNumber}
-          isMobile={false}
-          onMobileVillaClick={onViewVillaDetails}
-        />
         
         {/* Contact Section Component */}
         <ContactSection />
