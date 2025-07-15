@@ -1,0 +1,195 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 180 2% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 180 2% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 2% 20%;
+
+    --primary: 183 55% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 42 33% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 183 55% 90%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 183 55% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 180 2% 20%;
+    --foreground: 210 40% 98%;
+
+    --card: 180 2% 20%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 180 2% 20%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 183 55% 50%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 183 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight;
+  }
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
+}
+
+.section-padding {
+  @apply py-20 px-6 md:px-8 lg:px-12;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(104, 211, 194, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(104, 211, 194, 0.8);
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms, transform 600ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 600ms, transform 600ms;
+}
+
+/* Hero section animations */
+.hero-content {
+  animation-delay: 300ms;
+}
+
+.hero-image {
+  animation-delay: 600ms;
+}
+
+.hero-cta {
+  animation-delay: 900ms;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  @apply font-bold;
+  background: linear-gradient(90deg, #68D3C2, #4DB3A2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button styles */
+.button-primary {
+  @apply bg-therma text-white font-medium py-3 px-6 rounded-full 
+    shadow-md hover:shadow-lg transform transition-all duration-300 
+    ease-in-out hover:-translate-y-1 hover:bg-therma-dark focus:outline-none 
+    focus:ring-2 focus:ring-therma focus:ring-opacity-50;
+}
+
+.button-outline {
+  @apply border-2 border-therma text-therma font-medium py-3 px-6 
+    rounded-full hover:bg-therma/10 transform transition-all duration-300 
+    ease-in-out hover:-translate-y-1 focus:outline-none focus:ring-2 
+    focus:ring-therma focus:ring-opacity-50;
+}
+
+/* Image hover effects */
+.image-hover {
+  @apply overflow-hidden rounded-xl;
+}
+
+.image-hover img {
+  @apply transform transition-all duration-500 ease-in-out hover:scale-105;
+}
