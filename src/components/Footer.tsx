@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom';
 import { useContactSettings } from '@/contexts/ContactSettingsContext';
 // Logo uploaded by user
 const nhtLogo = "/lovable-uploads/fdceb919-f820-437f-bcf9-b7b576a2f18e.png";
-
 const Footer = () => {
-  const { contactSettings } = useContactSettings();
-  
-  return (
-    <footer className="pt-20 pb-10 px-6 bg-gradient-to-b from-white to-therma-gray">
+  const {
+    contactSettings
+  } = useContactSettings();
+  return <footer className="pt-20 pb-10 px-6 bg-gradient-to-b from-white to-therma-gray">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Logo and description */}
@@ -18,48 +17,26 @@ const Footer = () => {
                 <span className="gradient-text">Therma Prime</span>
               </h2>
             </Link>
-            <p className="text-gray-600 mb-6 max-w-md">
-              Yalova Termal bölgesine çok yakın bir konumda yer alan, 44 özel villadan oluşan, doğal yapıya sahip lüks bir yaşam projesi.
-            </p>
+            <p className="text-gray-600 mb-6 max-w-md">Yalova Termal bölgesine çok yakın bir konumda yer alan, 44 özel villadan oluşan, doğal yapıya sahip lüks bir yaşam projesi. Therma Prime Projesi Bir NHT KARAKOÇ İNŞAAT Projesidir</p>
             
             {/* NHT Logo */}
             <div className="mb-6 text-center">
-              <img 
-                src={nhtLogo} 
-                alt="NHT Karakoç İnşaat" 
-                className="h-32 w-auto mx-auto"
-              />
+              <img src={nhtLogo} alt="NHT Karakoç İnşaat" className="h-32 w-auto mx-auto" />
             </div>
             
             <div className="flex space-x-4">
-              {contactSettings?.facebook_url && (
-                <a 
-                  href={contactSettings.facebook_url} 
-                  className="p-2 rounded-full bg-therma/10 text-therma hover:bg-therma hover:text-white transition-colors duration-300" 
-                  aria-label="Facebook"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              {contactSettings?.facebook_url && <a href={contactSettings.facebook_url} className="p-2 rounded-full bg-therma/10 text-therma hover:bg-therma hover:text-white transition-colors duration-300" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                   </svg>
-                </a>
-              )}
-              {contactSettings?.instagram_url && (
-                <a 
-                  href={contactSettings.instagram_url} 
-                  className="p-2 rounded-full bg-therma/10 text-therma hover:bg-therma hover:text-white transition-colors duration-300" 
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </a>}
+              {contactSettings?.instagram_url && <a href={contactSettings.instagram_url} className="p-2 rounded-full bg-therma/10 text-therma hover:bg-therma hover:text-white transition-colors duration-300" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                   </svg>
-                </a>
-              )}
+                </a>}
             </div>
           </div>
           
@@ -149,8 +126,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
