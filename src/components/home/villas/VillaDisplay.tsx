@@ -42,25 +42,18 @@ const VillaDisplay: React.FC<VillaDisplayProps> = ({ selectedVillaType, villas }
   const displayHalls = selectedVilla?.halls || defaultProps.halls;
   const displayFeatures = selectedVilla?.features || defaultProps.features;
   
-  // Get villa images with improved logic
+  // Get villa images with optimized logic - only from first villa to improve performance
   const getVillaImages = () => {
     console.log('=== VillaDisplay - Getting villa images ===');
     
     let images: string[] = [];
     
-    // Use villa image_urls directly
-    if (villas && villas.length > 0) {
-      let allVillaImages: string[] = [];
-      villas.forEach((villa, index) => {
-        console.log(`Villa ${index + 1} image_urls:`, villa.image_urls);
-        if (villa.image_urls && Array.isArray(villa.image_urls)) {
-          allVillaImages = [...allVillaImages, ...villa.image_urls];
-        }
-      });
-      
-      // Remove duplicates and filter out empty/invalid URLs
-      images = [...new Set(allVillaImages)].filter(img => img && img.trim() !== '' && img !== 'null' && img !== 'undefined');
-      console.log('Combined villa images:', images);
+    // Use only the first villa's images for better performance
+    if (villas && villas.length > 0 && villas[0].image_urls) {
+      images = Array.isArray(villas[0].image_urls) 
+        ? villas[0].image_urls.filter(img => img && img.trim() !== '' && img !== 'null' && img !== 'undefined')
+        : [];
+      console.log('First villa images:', images);
     }
     
     // If no images found, add a placeholder

@@ -17,11 +17,13 @@ const Footer = () => {
                 <span className="gradient-text">Therma Prime</span>
               </h2>
             </Link>
-            <p className="text-gray-600 mb-6 max-w-md">Yalova Termal bölgesine çok yakın bir konumda yer alan, 44 özel villadan oluşan, doğal yapıya sahip lüks bir yaşam projesi. Therma Prime Projesi Bir NHT KARAKOÇ İNŞAAT Projesidir</p>
+            <p className="text-gray-600 mb-6 max-w-md">Yalova Termal bölgesine çok yakın bir konumda yer alan, 44 özel villadan oluşan, doğal yapıya sahip lüks bir yaşam projesi. Therma Prime Projesi Bir <a href="https://nht.karakocinsaat.com.tr/" target="_blank" rel="noopener noreferrer" className="font-bold text-therma hover:underline">NHT KARAKOÇ İNŞAAT</a> Projesidir</p>
             
             {/* NHT Logo */}
             <div className="mb-6 text-center">
-              <img src={nhtLogo} alt="NHT Karakoç İnşaat" className="h-32 w-auto mx-auto" />
+              <a href="https://nht.karakocinsaat.com.tr/" target="_blank" rel="noopener noreferrer">
+                <img src={nhtLogo} alt="NHT Karakoç İnşaat" className="h-32 w-auto mx-auto hover:opacity-80 transition-opacity cursor-pointer" />
+              </a>
             </div>
             
             <div className="flex space-x-4">
