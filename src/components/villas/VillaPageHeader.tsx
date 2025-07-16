@@ -16,7 +16,8 @@ const VillaPageHeader = () => {
       
       if (error) throw error;
       return data;
-    }
+    },
+    staleTime: 1000 * 60 * 10, // 10 minutes cache
   });
 
   // Use the first slider image if available, otherwise fallback to default
@@ -40,6 +41,9 @@ const VillaPageHeader = () => {
           src={heroImage} 
           alt="Therma Prime Villalar" 
           className="absolute inset-0 h-full w-full object-cover" 
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="container-custom relative z-20 h-full flex flex-col justify-center text-white">
           <div className="max-w-3xl">

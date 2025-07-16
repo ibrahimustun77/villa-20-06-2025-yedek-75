@@ -79,6 +79,9 @@ const VillaImage: React.FC<VillaImageProps> = ({
           src={currentImage}
           alt={`${name} - Image ${safeCurrentIndex + 1}`}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           onError={(e) => {
             console.log('VillaImage - Image load error:', currentImage);
             (e.target as HTMLImageElement).src = '/placeholder.svg';

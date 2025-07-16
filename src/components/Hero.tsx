@@ -4,17 +4,10 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchActiveSliderImages } from '@/services/sliderService';
 
-// Fallback images in case database is empty
-const fallbackImages = [
-  'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200',
-  'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=1200',
-  'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1200',
-  'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=1200'
-];
-
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [firstImageLoaded, setFirstImageLoaded] = useState(false);
   
   const { data: sliderImages = [], isLoading, isSuccess } = useQuery({
     queryKey: ['activeSliderImages', 'home'],
@@ -27,35 +20,51 @@ const Hero = () => {
     ? sliderImages.map(img => img.image_url)
     : [];
 
-  // Preload images for better performance
+  // Preload first image immediately, then others progressively
   useEffect(() => {
     if (heroImageUrls.length > 0) {
-      let loadedCount = 0;
-      const totalImages = heroImageUrls.length;
-      
-      heroImageUrls.forEach((url) => {
-        const img = new Image();
-        img.onload = () => {
-          loadedCount++;
-          if (loadedCount === totalImages) {
-            setImagesLoaded(true);
+      // Load first image with highest priority
+      const firstImg = new Image();
+      firstImg.onload = () => {
+        setFirstImageLoaded(true);
+        // Start loading remaining images after first one loads
+        if (heroImageUrls.length > 1) {
+          let loadedCount = 1; // First image already loaded
+          const totalImages = heroImageUrls.length;
+          
+          // Load remaining images
+          for (let i = 1; i < heroImageUrls.length; i++) {
+            const img = new Image();
+            img.onload = () => {
+              loadedCount++;
+              if (loadedCount === totalImages) {
+                setImagesLoaded(true);
+              }
+            };
+            // Small delay to prioritize first image
+            setTimeout(() => {
+              img.src = heroImageUrls[i];
+            }, i * 100);
           }
-        };
-        img.src = url;
-      });
+        } else {
+          setImagesLoaded(true);
+        }
+      };
+      firstImg.src = heroImageUrls[0];
     }
   }, [heroImageUrls]);
 
   useEffect(() => {
-    if (!imagesLoaded) return;
+    if (!firstImageLoaded) return;
     
     const interval = setInterval(() => {
       setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImageUrls.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [heroImageUrls.length, imagesLoaded]);
+  }, [heroImageUrls.length, firstImageLoaded]);
 
-  if (isLoading || (heroImageUrls.length > 0 && !imagesLoaded)) {
+  // Show loading state only until first image loads
+  if (isLoading || (heroImageUrls.length > 0 && !firstImageLoaded)) {
     return (
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-therma/20 to-gray-900">
         <div className="container-custom relative z-20 text-white pt-20">
@@ -118,7 +127,9 @@ const Hero = () => {
             src={url} 
             alt={`Therma Prime Villa ${index + 1}`} 
             className="absolute inset-0 h-full w-full object-cover"
-            loading={index === 0 ? "eager" : "lazy"}
+            loading="eager"
+            fetchPriority={index === 0 ? "high" : "low"}
+            decoding="async"
           />
         </div>
       ))}
