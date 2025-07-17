@@ -40,7 +40,15 @@ const AboutPage = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center mb-20">
             <div className="animate-on-scroll">
               <div className="image-hover rounded-2xl overflow-hidden shadow-xl">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" alt="Therma Prime Doğal Ortam" className="w-full h-[500px] object-cover" />
+                <img 
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" 
+                  alt="Therma Prime Doğal Ortam" 
+                  className="w-full h-[500px] object-cover"
+                  srcSet="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&q=75 400w, https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&q=75 800w, https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1200&q=75 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             </div>
             
@@ -223,7 +231,15 @@ const AboutPage = () => {
             <div className="glass-card p-8 rounded-2xl animate-on-scroll">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200" alt="Mimar" className="w-full h-full object-cover" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200" 
+                    alt="Mimar" 
+                    className="w-full h-full object-cover"
+                    srcSet="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=100&q=75 100w, https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200&q=75 200w"
+                    sizes="64px"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div>
                   
@@ -241,7 +257,15 @@ const AboutPage = () => {
           }}>
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200" alt="Geliştirici" className="w-full h-full object-cover" />
+                  <img 
+                    src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200" 
+                    alt="Geliştirici" 
+                    className="w-full h-full object-cover"
+                    srcSet="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=100&q=75 100w, https://images.unsplash.com/photo-1472396961693-142e6e269027?w=200&q=75 200w"
+                    sizes="64px"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div>
                   

@@ -30,7 +30,15 @@ const About = () => {
           <div>
             <div className="relative">
               <div className="image-hover rounded-2xl overflow-hidden shadow-2xl animate-on-scroll">
-                <img src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800" alt="Therma Prime doğa manzarası" className="w-full h-[500px] object-cover" />
+                <img 
+                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800" 
+                  alt="Therma Prime doğa manzarası" 
+                  className="w-full h-[500px] object-cover"
+                  srcSet="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=400&q=75 400w, https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=800&q=75 800w, https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=1200&q=75 1200w"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div className="absolute -bottom-8 -right-8 glass-card p-6 rounded-2xl max-w-xs animate-on-scroll" style={{
               animationDelay: '200ms'
