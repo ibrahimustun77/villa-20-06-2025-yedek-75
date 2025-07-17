@@ -4,10 +4,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ContactSettingsProvider } from "./contexts/ContactSettingsContext";
 import FixedContactButtons from "./components/contact/FixedContactButtons";
+import LoadingSkeleton from "./components/villas/LoadingSkeleton";
 import Index from "./pages/Index";
 import AboutPage from "./pages/AboutPage";
 import VillasPage from "./pages/VillasPage";
@@ -56,16 +57,18 @@ const App = () => {
             <BrowserRouter>
               <ScrollToTop />
               <FixedContactButtons />
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/hakkinda" element={<AboutPage />} />
-                <Route path="/villalar" element={<VillasPage />} />
-                <Route path="/galeri" element={<GalleryPage />} />
-                <Route path="/iletisim" element={<ContactPage />} />
-                <Route path="/admin" element={<AdminPage />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <Suspense fallback={<LoadingSkeleton />}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/hakkinda" element={<AboutPage />} />
+                  <Route path="/villalar" element={<VillasPage />} />
+                  <Route path="/galeri" element={<GalleryPage />} />
+                  <Route path="/iletisim" element={<ContactPage />} />
+                  <Route path="/admin" element={<AdminPage />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
             </BrowserRouter>
           </ContactSettingsProvider>
         </AuthProvider>
