@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { sanitizeSVG } from '@/utils/security';
 
 export const getRoomIcon = (roomCountsToUse: any[], roomTypeName: string, defaultIcon: React.ReactNode) => {
   const roomCount = roomCountsToUse.find(rc => 
@@ -11,7 +12,7 @@ export const getRoomIcon = (roomCountsToUse: any[], roomTypeName: string, defaul
     return (
       <div 
         className="w-4 h-4 md:w-5 md:h-5 text-therma mr-2 md:mr-3"
-        dangerouslySetInnerHTML={{ __html: roomCount.property_icons?.icon_svg || roomCount.icon_svg }}
+        dangerouslySetInnerHTML={{ __html: sanitizeSVG(roomCount.property_icons?.icon_svg || roomCount.icon_svg) }}
       />
     );
   }
@@ -25,7 +26,7 @@ export const getIconForRoomType = (roomTypeName: string, customIcon?: string) =>
     return (
       <div 
         className="w-4 h-4 md:w-5 md:h-5 text-therma mr-2 md:mr-3"
-        dangerouslySetInnerHTML={{ __html: customIcon }}
+        dangerouslySetInnerHTML={{ __html: sanitizeSVG(customIcon) }}
       />
     );
   }

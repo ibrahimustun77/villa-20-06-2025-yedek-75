@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { sendContactEmail } from '@/services/emailService';
 import { useContactSettings } from '@/contexts/ContactSettingsContext';
+import { sanitizeIframe } from '@/utils/security';
 const ContactPage = () => {
   const { contactSettings } = useContactSettings();
   const [formData, setFormData] = useState({
@@ -130,7 +131,7 @@ const ContactPage = () => {
             <h3 className="text-2xl font-bold mb-6">Konum</h3>
             <div className="rounded-xl overflow-hidden shadow-lg h-[500px]">
               {contactSettings?.location_iframe ? (
-                <div dangerouslySetInnerHTML={{ __html: contactSettings.location_iframe }} className="w-full h-full" />
+                <div dangerouslySetInnerHTML={{ __html: sanitizeIframe(contactSettings.location_iframe) }} className="w-full h-full" />
               ) : (
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48345.459861682776!2d29.123685!3d40.658476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb4f66644bfb9d%3A0x82690ee7586b7eb9!2sTermal%2F%C4%B0stanbul%2FT%C3%BCrkiye!5e0!3m2!1str!2str!4v1654789542712!5m2!1str!2str" width="100%" height="100%" style={{
                 border: 0

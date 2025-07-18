@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
+import { sanitizeSVG } from '@/utils/security';
 
 interface PropertyIcon {
   id: string;
@@ -85,7 +86,7 @@ const IconGallery: React.FC<IconGalleryProps> = ({
                   )}
                   <div 
                     className="w-6 h-6"
-                    dangerouslySetInnerHTML={{ __html: icon.icon_svg }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeSVG(icon.icon_svg) }}
                   />
                   <span className="text-xs text-center leading-tight">
                     {icon.display_name}

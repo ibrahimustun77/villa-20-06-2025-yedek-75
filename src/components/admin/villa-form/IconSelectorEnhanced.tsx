@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import IconGallery from './IconGallery';
 import { Image, X } from 'lucide-react';
+import { sanitizeSVG } from '@/utils/security';
 
 interface IconSelectorEnhancedProps {
   label: string;
@@ -63,7 +64,7 @@ const IconSelectorEnhanced: React.FC<IconSelectorEnhancedProps> = ({
                 <>
                   <div 
                     className="w-5 h-5 flex-shrink-0"
-                    dangerouslySetInnerHTML={{ __html: selectedIcon.icon_svg }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeSVG(selectedIcon.icon_svg) }}
                   />
                   <span className="truncate">{selectedIcon.display_name}</span>
                 </>

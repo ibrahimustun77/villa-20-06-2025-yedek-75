@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
 import { Plus, Edit, Trash2 } from 'lucide-react';
+import { sanitizeSVG } from '@/utils/security';
 
 const IconManagement: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -229,7 +230,7 @@ const IconManagement: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-6 h-6"
-                    dangerouslySetInnerHTML={{ __html: icon.icon_svg }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeSVG(icon.icon_svg) }}
                   />
                   {icon.display_name}
                 </div>

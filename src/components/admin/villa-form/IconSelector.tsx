@@ -4,6 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Label } from '@/components/ui/label';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
+import { sanitizeSVG } from '@/utils/security';
 
 interface IconSelectorProps {
   label: string;
@@ -79,7 +80,7 @@ const IconSelector: React.FC<IconSelectorProps> = ({
               <div className="flex items-center gap-2">
                 <div 
                   className="w-4 h-4 flex-shrink-0"
-                  dangerouslySetInnerHTML={{ __html: selectedIcon.icon_svg }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeSVG(selectedIcon.icon_svg) }}
                 />
                 <span className="truncate">{selectedIcon.display_name}</span>
               </div>
@@ -92,7 +93,7 @@ const IconSelector: React.FC<IconSelectorProps> = ({
               <div className="flex items-center gap-2">
                 <div 
                   className="w-4 h-4 flex-shrink-0"
-                  dangerouslySetInnerHTML={{ __html: icon.icon_svg }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeSVG(icon.icon_svg) }}
                 />
                 <span>{icon.display_name}</span>
               </div>
