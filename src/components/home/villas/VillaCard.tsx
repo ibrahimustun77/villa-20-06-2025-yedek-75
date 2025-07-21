@@ -5,6 +5,7 @@ import { VillaType } from '@/services/types';
 import VillaFeatures from './VillaFeatures';
 import VillaPriceSection from './VillaPriceSection';
 import VillaPropertiesGrid from './VillaPropertiesGrid';
+import { useContactSettings } from '@/contexts/ContactSettingsContext';
 
 interface VillaCardProps {
   villaType?: VillaType;
@@ -38,6 +39,7 @@ const VillaCard: React.FC<VillaCardProps> = ({
   actualVilla,
   isHomepage = true
 }) => {
+  const { contactSettings } = useContactSettings();
   // Always use actual villa data if available (this now comes from database with proper sync)
   const bedrooms = actualVilla?.bedrooms ?? displayBedrooms;
   const bathrooms = actualVilla?.bathrooms ?? displayBathrooms;
@@ -71,7 +73,7 @@ const VillaCard: React.FC<VillaCardProps> = ({
       // Villalar sayfasındaysa WhatsApp'a yönlendir
       const villaName = villaType?.name || 'Villa';
       const message = `Merhabalar ${villaName} hakkında bilgi almak istiyorum`;
-      const phoneNumber = "905318423477";
+      const phoneNumber = contactSettings?.whatsapp_number?.replace(/\D/g, '') || "905318423477";
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     }

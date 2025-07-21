@@ -85,6 +85,7 @@ export type Database = {
           phone_icon_style: string | null
           phone_icon_url: string | null
           phone_number: string | null
+          phone_number_secondary: string | null
           updated_at: string
           whatsapp_icon_size: string | null
           whatsapp_icon_style: string | null
@@ -101,6 +102,7 @@ export type Database = {
           phone_icon_style?: string | null
           phone_icon_url?: string | null
           phone_number?: string | null
+          phone_number_secondary?: string | null
           updated_at?: string
           whatsapp_icon_size?: string | null
           whatsapp_icon_style?: string | null
@@ -117,6 +119,7 @@ export type Database = {
           phone_icon_style?: string | null
           phone_icon_url?: string | null
           phone_number?: string | null
+          phone_number_secondary?: string | null
           updated_at?: string
           whatsapp_icon_size?: string | null
           whatsapp_icon_style?: string | null

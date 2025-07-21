@@ -5,6 +5,7 @@ export interface ContactSettings {
   id: string;
   whatsapp_number: string;
   phone_number: string;
+  phone_number_secondary?: string;
   whatsapp_icon_size?: string;
   phone_icon_size?: string;
   whatsapp_icon_style?: string;
@@ -42,6 +43,7 @@ export async function updateContactSettings(
   updates: { 
     whatsapp_number?: string; 
     phone_number?: string;
+    phone_number_secondary?: string;
     whatsapp_icon_size?: string;
     phone_icon_size?: string;
     whatsapp_icon_style?: string;

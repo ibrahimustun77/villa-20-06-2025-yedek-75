@@ -15,6 +15,7 @@ import IconSettingsGrid from './contact-settings/IconSettingsGrid';
 interface ContactSettingsForm {
   whatsapp_number: string;
   phone_number: string;
+  phone_number_secondary: string;
   whatsapp_icon_size: string;
   phone_icon_size: string;
   whatsapp_icon_style: string;
@@ -46,6 +47,7 @@ const ContactSettings: React.FC = () => {
     defaultValues: {
       whatsapp_number: '',
       phone_number: '',
+      phone_number_secondary: '',
       whatsapp_icon_size: 'medium',
       phone_icon_size: 'medium',
       whatsapp_icon_style: 'standard',
@@ -63,6 +65,7 @@ const ContactSettings: React.FC = () => {
       form.reset({
         whatsapp_number: contactSettings.whatsapp_number || '',
         phone_number: contactSettings.phone_number || '',
+        phone_number_secondary: contactSettings.phone_number_secondary || '',
         whatsapp_icon_size: contactSettings.whatsapp_icon_size || 'medium',
         phone_icon_size: contactSettings.phone_icon_size || 'medium',
         whatsapp_icon_style: contactSettings.whatsapp_icon_style || 'standard',

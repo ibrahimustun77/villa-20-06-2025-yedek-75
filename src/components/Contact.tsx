@@ -79,9 +79,20 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Telefon</h4>
-                    <p className="text-gray-600">
-                      {contactSettings?.phone_number || "+90 (226) 123 45 67"}
-                    </p>
+                    <a 
+                      href={`tel:${contactSettings?.phone_number || '+905318423477'}`}
+                      className="text-gray-600 hover:text-therma transition-colors duration-200 cursor-pointer block"
+                    >
+                      +90 (531) 842 34 77
+                    </a>
+                    {contactSettings?.phone_number_secondary && (
+                      <a 
+                        href={`tel:${contactSettings.phone_number_secondary}`}
+                        className="text-gray-600 hover:text-therma transition-colors duration-200 cursor-pointer block mt-1"
+                      >
+                        +90 (546) 670 85 54
+                      </a>
+                    )}
                   </div>
                 </div>
                 
@@ -91,7 +102,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">E-posta</h4>
-                    <p className="text-gray-600">info@thermaprime.com</p>
+                    <a 
+                      href="mailto:info@thermaprime.com"
+                      className="text-gray-600 hover:text-therma transition-colors duration-200 cursor-pointer"
+                    >
+                      info@thermaprime.com
+                    </a>
                   </div>
                 </div>
                 

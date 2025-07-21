@@ -33,12 +33,29 @@ const ContactNumberFields: React.FC<ContactNumberFieldsProps> = ({ form }) => {
         name="phone_number"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Telefon Numarası</FormLabel>
+            <FormLabel>Telefon Numarası (Ana)</FormLabel>
             <FormControl>
-              <Input placeholder="Örn: 905001234567" {...field} />
+              <Input placeholder="Örn: 905311234567" {...field} />
             </FormControl>
             <p className="text-xs text-muted-foreground">
-              Uluslararası format kullanın (örn: 905001234567)
+              Uluslararası format kullanın (örn: 905311234567)
+            </p>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+
+      <FormField
+        control={form.control}
+        name="phone_number_secondary"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Telefon Numarası (İkinci)</FormLabel>
+            <FormControl>
+              <Input placeholder="Örn: 905461234567" {...field} />
+            </FormControl>
+            <p className="text-xs text-muted-foreground">
+              Uluslararası format kullanın (örn: 905461234567)
             </p>
             <FormMessage />
           </FormItem>
